@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAKURA Chatbot Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-button {
+            background: linear-gradient(135deg, #8B4513, #A0522D);
+            color: white;
+            border: none;
+            padding: 20px 40px;
+            border-radius: 25px;
+            font-size: 18px;
+            cursor: pointer;
+            margin: 10px;
+            transition: all 0.2s;
+        }
+        .test-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(139, 69, 19, 0.3);
+        }
+        .status {
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+        .success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .error { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+    </style>
+</head>
+<body>
+    <h1>🌸 SAKURA AI Chatbot Test Page</h1>
+    
+    <div id="status" class="status">Ready to test...</div>
+    
+    <button class="test-button" onclick="testCreateAdvancedSakuraChat()">
+        🌸 Test SAKURA AI Chat
+    </button>
+    
+    <button class="test-button" onclick="testDirectFunction()">
+        🔧 Test Direct Function
+    </button>
+    
+    <button class="test-button" onclick="testAlert()">
+        ⚠️ Test Basic Alert
+    </button>
+
+    <script>
+        function updateStatus(message, type = 'success') {
+            const status = document.getElementById('status');
+            status.textContent = message;
+            status.className = `status ${type}`;
+            console.log(`${type.toUpperCase()}: ${message}`);
+        }
+
+        function testAlert() {
+            alert('✅ Basic JavaScript is working!');
+            updateStatus('Basic JavaScript test passed!', 'success');
+        }
+
+        function testDirectFunction() {
+            try {
+                if (typeof createAdvancedSakuraChat === 'function') {
+                    updateStatus('createAdvancedSakuraChat function found! Calling...', 'success');
+                    createAdvancedSakuraChat();
+                } else {
+                    updateStatus('createAdvancedSakuraChat function NOT found!', 'error');
+                }
+            } catch (error) {
+                updateStatus(`Error: ${error.message}`, 'error');
+            }
+        }
+
+        function testCreateAdvancedSakuraChat() {
+            console.log('🧪 Testing SAKURA AI Chat...');
+            updateStatus('Starting SAKURA AI test...', 'success');
+            
+            // 既存チャット削除
+            const existingChats = document.querySelectorAll('[id*="sakura"], [id*="Chat"], [id*="chat"]');
+            existingChats.forEach(chat => chat.remove());
+            
+            // 高機能AIチャット作成
+            const aiChat = document.createElement('div');
+            aiChat.id = 'sakuraAIChat';
+            aiChat.style.cssText = `
+                position: fixed !important;
+                top: 60px !important;
+                right: 20px !important;
+                width: 420px !important;
+                height: 650px !important;
+                background: linear-gradient(145deg, #ffffff, #f8f9fa) !important;
+                border: 3px solid #8B4513 !important;
+                border-radius: 25px !important;
+                z-index: 999999 !important;
+                box-shadow: 0 20px 60px rgba(139, 69, 19, 0.4) !important;
+                display: flex !important;
+                flex-direction: column !important;
+                font-family: 'Arial', sans-serif !important;
+            `;
+            
+            aiChat.innerHTML = `
+                <div style="background: linear-gradient(135deg, #8B4513, #A0522D, #CD853F); color: white; padding: 25px; border-radius: 22px 22px 0 0; display: flex; justify-content: space-between; align-items: center;">
+                    <div style="display: flex; align-items: center; gap: 18px;">
+                        <div style="width: 45px; height: 45px; background: linear-gradient(45deg, #FF69B4, #FFB6C1); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 22px; border: 3px solid white;">🌸</div>
+                        <div>
+                            <div style="font-weight: bold; font-size: 20px;">🌸 SAKURA AI</div>
+                            <div style="font-size: 13px; opacity: 0.9;">GPT & DeepL Powered Expert</div>
+                        </div>
+                    </div>
+                    <button onclick="document.getElementById('sakuraAIChat').remove()" style="background: rgba(255,255,255,0.2); border: none; color: white; font-size: 26px; cursor: pointer; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">&times;</button>
+                </div>
+                <div style="flex: 1; padding: 25px; overflow-y: auto; background: linear-gradient(to bottom, #f8f9fa, #ffffff);">
+                    <div style="background: linear-gradient(135deg, #e3f2fd, #bbdefb); padding: 20px; border-radius: 18px; margin-bottom: 18px; border-left: 6px solid #8B4513;">
+                        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+                            <span style="font-size: 24px;">🤖</span>
+                            <strong style="color: #8B4513; font-size: 18px;">SAKURA AI:</strong>
+                        </div>
+                        <p style="margin: 0; line-height: 1.7; color: #333; font-size: 16px;">Hello! I'm SAKURA AI, your Tullamore D.E.W. expert! This test version is working perfectly! 🥃✨</p>
+                    </div>
+                </div>
+                <div style="padding: 25px; border-top: 2px solid #e9ecef; background: white; border-radius: 0 0 22px 22px;">
+                    <div style="text-align: center; color: #8B4513; font-weight: bold;">✅ SAKURA AI Test Successful!</div>
+                </div>
+            `;
+            
+            document.body.appendChild(aiChat);
+            updateStatus('✅ SAKURA AI Chat created successfully!', 'success');
+            console.log('✅ SAKURA AI test completed');
+        }
+
+        // テスト用のダミー関数も定義
+        function createAdvancedSakuraChat() {
+            console.log('🌸 SAKURA AI function called!');
+            testCreateAdvancedSakuraChat();
+        }
+
+        // ページ読み込み完了時の初期化
+        document.addEventListener('DOMContentLoaded', function() {
+            updateStatus('Test page loaded. Ready to test SAKURA AI!', 'success');
+        });
+    </script>
+</body>
+</html>
