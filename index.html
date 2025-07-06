@@ -202,9 +202,9 @@
                         </button>
                         
                         <div class="speech-examples">
-                            <span class="example-q" data-translate="ai_example_1">"Tell me about Daniel E. Williams and the D.E.W. story"</span>
-                            <span class="example-q" data-translate="ai_example_2">"What makes Tullamore D.E.W.'s triple blend special?"</span>
-                            <span class="example-q" data-translate="ai_example_3">"Which expression is best for cocktails?"</span>
+                            <span class="example-q" data-translate="ai_example_1" onclick="startSakuraAIChat()">"Tell me about Daniel E. Williams and the D.E.W. story"</span>
+                            <span class="example-q" data-translate="ai_example_2" onclick="startSakuraAIChat()">"What makes Tullamore D.E.W.'s triple blend special?"</span>
+                            <span class="example-q" data-translate="ai_example_3" onclick="startSakuraAIChat()">"Which expression is best for cocktails?"</span>
                         </div>
                     </div>
                 </div>
@@ -750,10 +750,12 @@
             let response = "I'm SAKURA AI! Ask me about our whiskeys!";
             const lower = message.toLowerCase();
             
-            if (lower.includes('original')) response = "🥃 Tullamore D.E.W. Original - Our signature triple blend at 40% ABV!";
-            else if (lower.includes('12')) response = "🏆 12 Year Special Reserve - Four cask maturation for incredible complexity!";
-            else if (lower.includes('honey')) response = "🍯 Tullamore D.E.W. Honey - Sweet whiskey liqueur at 35% ABV!";
-            else if (lower.includes('history')) response = "📜 Founded in 1829! D.E.W. stands for Daniel E. Williams!";
+            if (lower.includes('original')) response = "🥃 <strong>Tullamore D.E.W. Original</strong><br>Our signature triple blend at 40% ABV! Combines grain, malt, and pot still whiskeys matured in bourbon, port, and sherry casks for exceptional smoothness.";
+            else if (lower.includes('12')) response = "🏆 <strong>12 Year Special Reserve</strong><br>Four cask maturation for incredible complexity! Aged in bourbon, port, Madeira, and sherry casks with rich dried fruits and honey notes.";
+            else if (lower.includes('honey')) response = "🍯 <strong>Tullamore D.E.W. Honey</strong><br>Sweet whiskey liqueur at 35% ABV! Smooth Irish whiskey blended with natural honey - perfect for cocktails!";
+            else if (lower.includes('history') || lower.includes('daniel') || lower.includes('williams')) response = "📜 <strong>Our Heritage Since 1829</strong><br>Founded in 1829! D.E.W. stands for Daniel E. Williams, who joined in 1887 and revolutionized Irish whiskey with triple distillation.";
+            else if (lower.includes('cocktail')) response = "🍹 <strong>Best for Cocktails</strong><br>Original is perfect for cocktails! Also try our Honey for sweet drinks. Both mix beautifully while maintaining character.";
+            else if (lower.includes('triple') || lower.includes('blend')) response = "🥃 <strong>Triple Blend Magic</strong><br>We combine grain whiskey (smoothness), malt whiskey (sweetness), and pot still whiskey (character) - triple distilled for perfection!";
             
             sakuraMsg.innerHTML = `<strong>🌸 SAKURA AI:</strong><br>${response}`;
             chatArea.appendChild(sakuraMsg);
@@ -763,6 +765,46 @@
         input.value = '';
         chatArea.scrollTop = chatArea.scrollHeight;
     }
+    
+    // パスワード保護の追加
+    function showPasswordPrompt() {
+        const password = prompt("🔐 Enter access code for Tullamore D.E.W. premium content:");
+        if (password === "tullamore2024" || password === "dew1829") {
+            sessionStorage.setItem("authenticated", "true");
+            return true;
+        } else if (password !== null) {
+            alert("❌ Invalid access code. Please contact site administrator.");
+        }
+        return false;
+    }
+    
+    // 認証チェック関数
+    function checkAuthentication() {
+        if (sessionStorage.getItem("authenticated") !== "true") {
+            if (!showPasswordPrompt()) {
+                document.body.innerHTML = `
+                    <div style="display: flex; justify-content: center; align-items: center; height: 100vh; background: linear-gradient(135deg, #8B4513, #CD853F); color: white; font-family: Arial, sans-serif; text-align: center;">
+                        <div>
+                            <h1>🔐 Access Required</h1>
+                            <p>This is a premium Tullamore D.E.W. experience.</p>
+                            <button onclick="location.reload()" style="background: white; color: #8B4513; border: none; padding: 15px 30px; border-radius: 25px; font-weight: bold; cursor: pointer; margin-top: 20px;">Try Again</button>
+                        </div>
+                    </div>
+                `;
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    // ページロード時に認証チェック
+    document.addEventListener('DOMContentLoaded', function() {
+        setTimeout(() => {
+            if (!checkAuthentication()) {
+                return;
+            }
+        }, 2000);
+    });
     
     // 🤖 SAKURA AI チャットボット - GPT & DeepL対応版
     function createAdvancedSakuraChat() {
