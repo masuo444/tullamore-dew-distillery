@@ -197,7 +197,7 @@
                         <p data-translate="ai_greeting">Hello! I'm SAKURA, your friendly Tullamore D.E.W. whiskey expert.<br>
                         Ask me anything about our premium Irish whiskeys and heritage!</p>
                         
-                        <button class="ai-sommelier-chat-btn" id="aiSommelierChatBtn" data-translate="ai_chat_start" onclick="showPerfectSakuraChat()">
+                        <button class="ai-sommelier-chat-btn" id="aiSommelierChatBtn" data-translate="ai_chat_start" onclick="createAdvancedSakuraChat()" style="pointer-events: auto !important; cursor: pointer !important;">
                             🌸 Chat with SAKURA - Whiskey Expert
                         </button>
                         
@@ -616,27 +616,62 @@
         }, 100);
     }
     
-    // 🌸 SAKURA AI チャットボット - 絶対確実版
+    // 🌸 SAKURA AI チャットボット - 最終確実版
     document.addEventListener('DOMContentLoaded', function() {
-        console.log('🚀 SAKURA AI システム初期化中...');
+        console.log('🚀 SAKURA AI システム初期化開始...');
         
-        // チャットボタンの設定
-        const chatBtn = document.getElementById('aiSommelierChatBtn');
-        if (chatBtn) {
-            // クリックイベントリスナー追加
-            chatBtn.onclick = function(e) {
-                e.preventDefault();
-                console.log('🌸 SAKURA AI チャット開始');
-                createAdvancedSakuraChat();
-                return false;
-            };
-            console.log('✅ SAKURA AIボタン準備完了');
-        } else {
-            console.error('❌ チャットボタンが見つかりません');
+        // 複数の方法でボタンを取得・設定
+        function setupChatButton() {
+            const chatBtn = document.getElementById('aiSommelierChatBtn');
+            if (chatBtn) {
+                console.log('✅ チャットボタン発見');
+                
+                // すべてのイベントリスナーをクリア
+                chatBtn.onclick = null;
+                chatBtn.removeEventListener('click', createAdvancedSakuraChat);
+                
+                // 複数の方法でイベント設定
+                chatBtn.onclick = function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log('🌸 onclick イベント発火');
+                    createAdvancedSakuraChat();
+                    return false;
+                };
+                
+                chatBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log('🌸 addEventListener イベント発火');
+                    createAdvancedSakuraChat();
+                }, true);
+                
+                // CSS pointer-events を確認
+                chatBtn.style.pointerEvents = 'auto';
+                chatBtn.style.cursor = 'pointer';
+                
+                console.log('✅ SAKURA AIボタン設定完了');
+                return true;
+            }
+            return false;
         }
         
-        // ページ読み込み完了確認
-        console.log('✨ Tullamore D.E.W. サイト with SAKURA AI 初期化完了');
+        // 初回試行
+        if (!setupChatButton()) {
+            console.log('⏳ ボタン再検索中...');
+            // 少し待ってから再試行
+            setTimeout(() => {
+                if (!setupChatButton()) {
+                    console.log('⏳ さらに待機して再試行...');
+                    setTimeout(setupChatButton, 1000);
+                }
+            }, 500);
+        }
+        
+        // グローバル関数としても定義
+        window.startSakuraChat = createAdvancedSakuraChat;
+        
+        console.log('✨ SAKURA AI システム初期化完了');
     });
     
     // 🤖 SAKURA AI チャットボット - GPT & DeepL対応版
