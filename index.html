@@ -8,7 +8,15 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="theme-color" content="#8B4513">
     <title>Tullamore D.E.W. Distillery - Premium Irish Whiskey Experience</title>
-    <meta name="description" content="Discover the full range of Tullamore D.E.W.'s legendary Irish whiskeys, from our original blended Irish whiskey to our single malts and special reserves.">
+    <meta name="description" content="Experience Tullamore D.E.W. - Premium Irish Whiskey since 1829. Explore our signature triple blend, aged expressions, and heritage. Chat with SAKURA, our AI whiskey expert!">
+    <meta name="keywords" content="Tullamore DEW, Irish Whiskey, Premium Whiskey, Daniel E Williams, Triple Blend, Single Malt, Whiskey Tasting, Ireland Distillery">
+    <meta property="og:title" content="Tullamore D.E.W. Distillery - Premium Irish Whiskey Experience">
+    <meta property="og:description" content="Discover Ireland's finest whiskeys with SAKURA, your AI expert. Explore our heritage since 1829.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tullamore-dew.terroirhub.com">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Tullamore D.E.W. - Premium Irish Whiskey">
+    <meta name="twitter:description" content="Experience premium Irish whiskey with SAKURA AI expert guidance.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500;600;700&family=Source+Sans+Pro:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Dancing+Script:wght@400;500;700&display=swap" rel="stylesheet">
@@ -608,17 +616,193 @@
         }, 100);
     }
     
-    // 最終版：絶対に動作するSAKURAチャット
+    // 🌸 SAKURA チャットボット - 完璧版
     document.addEventListener('DOMContentLoaded', function() {
+        console.log('🚀 SAKURA システム初期化中...');
+        
+        // チャットボタンの設定
         const chatBtn = document.getElementById('aiSommelierChatBtn');
         if (chatBtn) {
             chatBtn.addEventListener('click', function(e) {
                 e.preventDefault();
-                console.log('✅ ボタンクリック検出');
-                createSakuraChat();
+                console.log('🌸 SAKURAチャット開始');
+                showPerfectSakuraChat();
             });
+            console.log('✅ SAKURAボタン準備完了');
+        } else {
+            console.error('❌ チャットボタンが見つかりません');
         }
+        
+        // サイト読み込み完了確認
+        console.log('✨ Tullamore D.E.W. サイト初期化完了');
     });
+    
+    // 🌸 完璧なSAKURAチャット関数
+    function showPerfectSakuraChat() {
+        console.log('🌸 完璧なSAKURAチャット起動中...');
+        
+        // 既存チャット削除
+        const existingChats = document.querySelectorAll('[id*="sakura"], [id*="Chat"]');
+        existingChats.forEach(chat => chat.remove());
+        
+        // 完璧なチャットUI作成
+        const perfectChat = document.createElement('div');
+        perfectChat.id = 'perfectSakuraChat';
+        perfectChat.style.cssText = `
+            position: fixed !important;
+            top: 70px !important;
+            right: 30px !important;
+            width: 400px !important;
+            height: 600px !important;
+            background: linear-gradient(145deg, #ffffff, #f8f9fa) !important;
+            border: 3px solid #8B4513 !important;
+            border-radius: 20px !important;
+            z-index: 999999 !important;
+            box-shadow: 0 15px 40px rgba(139, 69, 19, 0.4) !important;
+            display: flex !important;
+            flex-direction: column !important;
+            font-family: 'Source Sans Pro', sans-serif !important;
+            animation: sakuraFadeIn 0.3s ease !important;
+        `;
+        
+        perfectChat.innerHTML = `
+            <style>
+                @keyframes sakuraFadeIn {
+                    from { opacity: 0; transform: translateY(-20px) scale(0.9); }
+                    to { opacity: 1; transform: translateY(0) scale(1); }
+                }
+                @keyframes sakuraPulse {
+                    0%, 100% { opacity: 0.6; }
+                    50% { opacity: 1; }
+                }
+            </style>
+            <div style="background: linear-gradient(135deg, #8B4513, #A0522D, #CD853F); color: white; padding: 20px; border-radius: 17px 17px 0 0; display: flex; justify-content: space-between; align-items: center; position: relative;">
+                <div style="display: flex; align-items: center; gap: 15px;">
+                    <div style="position: relative;">
+                        <img src="images/sakura.png" alt="SAKURA" style="width: 40px; height: 40px; border-radius: 50%; border: 3px solid white; object-fit: cover;" onerror="this.outerHTML='<div style=\\"width: 40px; height: 40px; background: linear-gradient(45deg, #FF69B4, #FFB6C1); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; border: 3px solid white;\\">🌸</div>';">
+                        <div style="position: absolute; bottom: -2px; right: -2px; width: 12px; height: 12px; background: #00ff00; border-radius: 50%; border: 2px solid white;"></div>
+                    </div>
+                    <div>
+                        <div style="font-weight: bold; font-size: 18px;">🌸 SAKURA</div>
+                        <div style="font-size: 12px; opacity: 0.9;">Tullamore D.E.W. Expert</div>
+                    </div>
+                </div>
+                <button onclick="this.closest('#perfectSakuraChat').remove()" style="background: rgba(255,255,255,0.2); border: none; color: white; font-size: 24px; cursor: pointer; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.3)'" onmouseout="this.style.background='rgba(255,255,255,0.2)'">&times;</button>
+            </div>
+            <div id="perfectChatMessages" style="flex: 1; padding: 20px; overflow-y: auto; background: linear-gradient(to bottom, #f8f9fa, #ffffff);">
+                <div style="background: linear-gradient(135deg, #e3f2fd, #bbdefb); padding: 18px; border-radius: 15px; margin-bottom: 15px; border-left: 5px solid #8B4513; position: relative;">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                        <span style="font-size: 22px; animation: sakuraPulse 2s infinite;">🌸</span>
+                        <strong style="color: #8B4513; font-size: 16px;">SAKURA:</strong>
+                    </div>
+                    <p style="margin: 0; line-height: 1.6; color: #333; font-size: 15px;">Hello! I'm SAKURA, your personal Tullamore D.E.W. whiskey expert! 🥃<br><br>Ask me about our premium Irish whiskeys, our heritage since 1829, tasting notes, or get personalized recommendations!</p>
+                    <div style="position: absolute; bottom: -8px; left: 20px; width: 0; height: 0; border-left: 8px solid transparent; border-right: 8px solid transparent; border-top: 8px solid #bbdefb;"></div>
+                </div>
+                <div style="display: flex; gap: 8px; margin: 15px 0; flex-wrap: wrap;">
+                    <button onclick="askPerfectQuestion('Tell me about Original')" style="background: #8B4513; color: white; border: none; padding: 8px 12px; border-radius: 15px; font-size: 12px; cursor: pointer;">Original</button>
+                    <button onclick="askPerfectQuestion('What about 12 Year')" style="background: #A0522D; color: white; border: none; padding: 8px 12px; border-radius: 15px; font-size: 12px; cursor: pointer;">12 Year</button>
+                    <button onclick="askPerfectQuestion('Tell me about Honey')" style="background: #CD853F; color: white; border: none; padding: 8px 12px; border-radius: 15px; font-size: 12px; cursor: pointer;">Honey</button>
+                    <button onclick="askPerfectQuestion('Whiskey history')" style="background: #8B4513; color: white; border: none; padding: 8px 12px; border-radius: 15px; font-size: 12px; cursor: pointer;">History</button>
+                </div>
+            </div>
+            <div style="padding: 20px; border-top: 2px solid #e9ecef; background: white; border-radius: 0 0 17px 17px;">
+                <div style="display: flex; gap: 12px; align-items: center;">
+                    <input type="text" id="perfectChatInput" placeholder="Ask SAKURA about whiskeys..." style="flex: 1; padding: 15px; border: 2px solid #8B4513; border-radius: 25px; outline: none; font-size: 14px; transition: border-color 0.2s;" onkeypress="if(event.key==='Enter')sendPerfectMessage()" onfocus="this.style.borderColor='#A0522D'" onblur="this.style.borderColor='#8B4513'">
+                    <button onclick="sendPerfectMessage()" style="background: linear-gradient(135deg, #8B4513, #A0522D); color: white; border: none; padding: 15px 25px; border-radius: 25px; cursor: pointer; font-weight: bold; font-size: 14px; transition: transform 0.1s;" onmousedown="this.style.transform='scale(0.95)'" onmouseup="this.style.transform='scale(1)'">Send</button>
+                </div>
+            </div>
+        `;
+        
+        document.body.appendChild(perfectChat);
+        console.log('✨ 完璧なSAKURAチャット表示完了');
+        
+        // 入力フィールドにフォーカス
+        setTimeout(() => {
+            const input = document.getElementById('perfectChatInput');
+            if (input) {
+                input.focus();
+                console.log('🎯 入力フィールドにフォーカス設定');
+            }
+        }, 100);
+    }
+    
+    // クイック質問機能
+    function askPerfectQuestion(question) {
+        const input = document.getElementById('perfectChatInput');
+        if (input) {
+            input.value = question;
+            sendPerfectMessage();
+        }
+    }
+    
+    // 完璧なメッセージ送信機能
+    function sendPerfectMessage() {
+        const input = document.getElementById('perfectChatInput');
+        const messages = document.getElementById('perfectChatMessages');
+        
+        if (!input || !messages || !input.value.trim()) return;
+        
+        const message = input.value.trim();
+        console.log('💬 メッセージ送信:', message);
+        
+        // ユーザーメッセージ表示
+        const userDiv = document.createElement('div');
+        userDiv.style.cssText = 'display: flex; justify-content: flex-end; margin: 15px 0;';
+        userDiv.innerHTML = `
+            <div style="background: linear-gradient(135deg, #8B4513, #A0522D); color: white; padding: 12px 18px; border-radius: 20px 20px 8px 20px; max-width: 80%; box-shadow: 0 3px 10px rgba(139, 69, 19, 0.3); position: relative;">
+                <strong>You:</strong> ${message}
+                <div style="position: absolute; bottom: -8px; right: 15px; width: 0; height: 0; border-left: 8px solid transparent; border-right: 8px solid transparent; border-top: 8px solid #A0522D;"></div>
+            </div>
+        `;
+        messages.appendChild(userDiv);
+        
+        // SAKURA応答生成
+        let response = "I'm SAKURA! 🌸 I'd love to help you explore Tullamore D.E.W.! Try asking about our 'Original', '12 Year', 'Honey', or our fascinating 'history' since 1829!";
+        
+        const lowerMessage = message.toLowerCase();
+        if (lowerMessage.includes('original')) {
+            response = "🥃 <strong>Tullamore D.E.W. Original</strong> is our signature triple blend masterpiece! At 40% ABV, it combines grain, malt, and pot still whiskeys matured in bourbon, port, and sherry casks. This creates exceptional smoothness with notes of vanilla, spice, and citrus fruits. Perfect for newcomers and connoisseurs alike!";
+        } else if (lowerMessage.includes('12') || lowerMessage.includes('twelve')) {
+            response = "🏆 <strong>12 Year Old Special Reserve</strong> is our premium expression! Aged in four different cask types - bourbon, port, Madeira, and sherry - creating incredible depth. Expect rich dried fruits, honey sweetness, and warming spices. A true celebration of Irish craftsmanship!";
+        } else if (lowerMessage.includes('honey')) {
+            response = "🍯 <strong>Tullamore D.E.W. Honey</strong> is our delightful liqueur at 35% ABV! We blend our smooth Irish whiskey with natural honey, creating a golden nectar that's perfect neat, on rocks, or in cocktails. Sweet, smooth, and absolutely irresistible!";
+        } else if (lowerMessage.includes('history') || lowerMessage.includes('daniel') || lowerMessage.includes('williams')) {
+            response = "📜 Our story began in <strong>1829</strong>! The 'D.E.W.' honors Daniel E. Williams, who joined in 1887 and revolutionized Irish whiskey. He pioneered triple distillation and made Tullamore Ireland's most progressive distillery. We're proud to continue his innovative legacy today!";
+        } else if (lowerMessage.includes('18')) {
+            response = "👑 <strong>18 Year Old Single Malt</strong> represents the absolute pinnacle! Matured 18 years in four cask types at 41.3% ABV. This ultra-premium expression offers extraordinary complexity with aged fruits, spices, and oak. A masterpiece for special occasions!";
+        } else if (lowerMessage.includes('caribbean') || lowerMessage.includes('rum')) {
+            response = "🏝️ <strong>Caribbean Rum Cask Finish XO</strong> is our tropical innovation! Finished in Caribbean rum casks at 43% ABV, adding exotic fruit notes and warm island character. This unique expression brings sunshine to every sip!";
+        } else if (lowerMessage.includes('15')) {
+            response = "✨ <strong>15 Year Old Trilogy</strong> showcases our triple cask mastery! Matured in bourbon, sherry, and port casks, creating a symphony of flavors. Each cask contributes unique character for an exceptional drinking experience!";
+        } else if (lowerMessage.includes('14')) {
+            response = "🌟 <strong>14 Year Old Single Malt</strong> is our four-cask finished single malt! At 41.3% ABV, it demonstrates our expertise in single malt production with incredible complexity and sophistication!";
+        }
+        
+        // SAKURA応答表示
+        setTimeout(() => {
+            const sakuraDiv = document.createElement('div');
+            sakuraDiv.style.cssText = 'margin: 15px 0; animation: sakuraFadeIn 0.3s ease;';
+            sakuraDiv.innerHTML = `
+                <div style="background: linear-gradient(135deg, #e3f2fd, #bbdefb); padding: 15px; border-radius: 20px 20px 20px 8px; border-left: 5px solid #8B4513; box-shadow: 0 3px 10px rgba(139, 69, 19, 0.1); position: relative;">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                        <span style="font-size: 18px;">🌸</span>
+                        <strong style="color: #8B4513; font-size: 16px;">SAKURA:</strong>
+                    </div>
+                    <p style="margin: 0; line-height: 1.6; color: #333; font-size: 15px;">${response}</p>
+                    <div style="position: absolute; bottom: -8px; left: 20px; width: 0; height: 0; border-left: 8px solid transparent; border-right: 8px solid transparent; border-top: 8px solid #bbdefb;"></div>
+                </div>
+            `;
+            messages.appendChild(sakuraDiv);
+            
+            // スクロール調整
+            messages.scrollTop = messages.scrollHeight;
+            console.log('🌸 SAKURA応答完了');
+        }, 500);
+        
+        // 入力クリア
+        input.value = '';
+        messages.scrollTop = messages.scrollHeight;
+    }
     
     // 確実に動作するSAKURAチャット関数
     function createSakuraChat() {
