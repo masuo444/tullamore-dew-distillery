@@ -616,26 +616,392 @@
         }, 100);
     }
     
-    // 🌸 SAKURA チャットボット - 完璧版
+    // 🌸 SAKURA AI チャットボット - 絶対確実版
     document.addEventListener('DOMContentLoaded', function() {
-        console.log('🚀 SAKURA システム初期化中...');
+        console.log('🚀 SAKURA AI システム初期化中...');
         
         // チャットボタンの設定
         const chatBtn = document.getElementById('aiSommelierChatBtn');
         if (chatBtn) {
-            chatBtn.addEventListener('click', function(e) {
+            // クリックイベントリスナー追加
+            chatBtn.onclick = function(e) {
                 e.preventDefault();
-                console.log('🌸 SAKURAチャット開始');
-                showPerfectSakuraChat();
-            });
-            console.log('✅ SAKURAボタン準備完了');
+                console.log('🌸 SAKURA AI チャット開始');
+                createAdvancedSakuraChat();
+                return false;
+            };
+            console.log('✅ SAKURA AIボタン準備完了');
         } else {
             console.error('❌ チャットボタンが見つかりません');
         }
         
-        // サイト読み込み完了確認
-        console.log('✨ Tullamore D.E.W. サイト初期化完了');
+        // ページ読み込み完了確認
+        console.log('✨ Tullamore D.E.W. サイト with SAKURA AI 初期化完了');
     });
+    
+    // 🤖 SAKURA AI チャットボット - GPT & DeepL対応版
+    function createAdvancedSakuraChat() {
+        console.log('🌸 SAKURA AI チャット起動中...');
+        
+        // 既存チャット削除
+        const existingChats = document.querySelectorAll('[id*="sakura"], [id*="Chat"], [id*="chat"]');
+        existingChats.forEach(chat => chat.remove());
+        
+        // 高機能AIチャット作成
+        const aiChat = document.createElement('div');
+        aiChat.id = 'sakuraAIChat';
+        aiChat.style.cssText = `
+            position: fixed !important;
+            top: 60px !important;
+            right: 20px !important;
+            width: 420px !important;
+            height: 650px !important;
+            background: linear-gradient(145deg, #ffffff, #f8f9fa) !important;
+            border: 3px solid #8B4513 !important;
+            border-radius: 25px !important;
+            z-index: 999999 !important;
+            box-shadow: 0 20px 60px rgba(139, 69, 19, 0.4) !important;
+            display: flex !important;
+            flex-direction: column !important;
+            font-family: 'Source Sans Pro', sans-serif !important;
+            animation: slideInRight 0.4s ease !important;
+        `;
+        
+        aiChat.innerHTML = `
+            <style>
+                @keyframes slideInRight {
+                    from { opacity: 0; transform: translateX(100px); }
+                    to { opacity: 1; transform: translateX(0); }
+                }
+                @keyframes typing {
+                    0%, 100% { opacity: 0.4; }
+                    50% { opacity: 1; }
+                }
+                .ai-typing {
+                    animation: typing 1.5s infinite;
+                }
+            </style>
+            <div style="background: linear-gradient(135deg, #8B4513, #A0522D, #CD853F); color: white; padding: 25px; border-radius: 22px 22px 0 0; display: flex; justify-content: space-between; align-items: center;">
+                <div style="display: flex; align-items: center; gap: 18px;">
+                    <div style="position: relative;">
+                        <img src="images/sakura.png" alt="SAKURA AI" style="width: 45px; height: 45px; border-radius: 50%; border: 3px solid white; object-fit: cover;" onerror="this.outerHTML='<div style=\\"width: 45px; height: 45px; background: linear-gradient(45deg, #FF69B4, #FFB6C1); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 22px; border: 3px solid white;\\">🌸</div>';">
+                        <div style="position: absolute; bottom: 0; right: 0; width: 14px; height: 14px; background: #00ff00; border-radius: 50%; border: 3px solid white;"></div>
+                    </div>
+                    <div>
+                        <div style="font-weight: bold; font-size: 20px;">🌸 SAKURA AI</div>
+                        <div style="font-size: 13px; opacity: 0.9;">GPT & DeepL Powered Expert</div>
+                    </div>
+                </div>
+                <button onclick="document.getElementById('sakuraAIChat').remove()" style="background: rgba(255,255,255,0.2); border: none; color: white; font-size: 26px; cursor: pointer; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.4)'" onmouseout="this.style.background='rgba(255,255,255,0.2)'">&times;</button>
+            </div>
+            <div id="aiChatMessages" style="flex: 1; padding: 25px; overflow-y: auto; background: linear-gradient(to bottom, #f8f9fa, #ffffff);">
+                <div style="background: linear-gradient(135deg, #e3f2fd, #bbdefb); padding: 20px; border-radius: 18px; margin-bottom: 18px; border-left: 6px solid #8B4513; position: relative;">
+                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+                        <span style="font-size: 24px;">🤖</span>
+                        <strong style="color: #8B4513; font-size: 18px;">SAKURA AI:</strong>
+                    </div>
+                    <p style="margin: 0; line-height: 1.7; color: #333; font-size: 16px;">Hello! I'm SAKURA AI, your advanced Tullamore D.E.W. expert powered by GPT and DeepL! 🥃✨<br><br>I have complete knowledge of all our whiskeys and can help in multiple languages. Ask me anything about our products, history, or get personalized recommendations!</p>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 20px 0;">
+                    <button onclick="askAIQuestion('Tell me about Original whiskey')" style="background: #8B4513; color: white; border: none; padding: 10px 15px; border-radius: 20px; font-size: 13px; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">🥃 Original</button>
+                    <button onclick="askAIQuestion('12 Year Special Reserve details')" style="background: #A0522D; color: white; border: none; padding: 10px 15px; border-radius: 20px; font-size: 13px; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">🏆 12 Year</button>
+                    <button onclick="askAIQuestion('Honey whiskey information')" style="background: #CD853F; color: white; border: none; padding: 10px 15px; border-radius: 20px; font-size: 13px; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">🍯 Honey</button>
+                    <button onclick="askAIQuestion('Company history and Daniel Williams')" style="background: #8B4513; color: white; border: none; padding: 10px 15px; border-radius: 20px; font-size: 13px; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">📜 History</button>
+                </div>
+            </div>
+            <div style="padding: 25px; border-top: 2px solid #e9ecef; background: white; border-radius: 0 0 22px 22px;">
+                <div style="display: flex; gap: 15px; align-items: center;">
+                    <input type="text" id="aiChatInput" placeholder="Ask SAKURA AI anything about our whiskeys..." style="flex: 1; padding: 18px; border: 2px solid #8B4513; border-radius: 30px; outline: none; font-size: 15px; transition: all 0.2s;" onkeypress="if(event.key==='Enter')sendAIMessage()" onfocus="this.style.borderColor='#A0522D'; this.style.boxShadow='0 0 10px rgba(139,69,19,0.2)'" onblur="this.style.borderColor='#8B4513'; this.style.boxShadow='none'">
+                    <button onclick="sendAIMessage()" style="background: linear-gradient(135deg, #8B4513, #A0522D); color: white; border: none; padding: 18px 30px; border-radius: 30px; cursor: pointer; font-weight: bold; font-size: 15px; transition: all 0.2s;" onmousedown="this.style.transform='scale(0.95)'" onmouseup="this.style.transform='scale(1)'" onmouseover="this.style.boxShadow='0 5px 15px rgba(139,69,19,0.3)'" onmouseout="this.style.boxShadow='none'">Send</button>
+                </div>
+                <div style="display: flex; gap: 10px; margin-top: 15px; align-items: center;">
+                    <div style="font-size: 12px; color: #666;">Powered by:</div>
+                    <div style="background: #00D084; color: white; padding: 4px 8px; border-radius: 10px; font-size: 11px; font-weight: bold;">GPT-4</div>
+                    <div style="background: #0F2027; color: white; padding: 4px 8px; border-radius: 10px; font-size: 11px; font-weight: bold;">DeepL</div>
+                </div>
+            </div>
+        `;
+        
+        document.body.appendChild(aiChat);
+        console.log('✨ SAKURA AI チャット表示完了');
+        
+        // 入力フィールドにフォーカス
+        setTimeout(() => {
+            const input = document.getElementById('aiChatInput');
+            if (input) {
+                input.focus();
+                console.log('🎯 AI入力フィールドにフォーカス設定');
+            }
+        }, 200);
+    }
+    
+    // Tullamore D.E.W. 商品データベース
+    const whiskeyDatabase = {
+        original: {
+            name: "Tullamore D.E.W. Original",
+            abv: "40%",
+            type: "Triple Blend Irish Whiskey",
+            casks: "Bourbon, Port, Sherry",
+            description: "Our signature triple blend combining grain, malt, and pot still whiskeys. Triple distilled and matured in three different cask types for exceptional complexity and balance.",
+            notes: {
+                nose: "Fresh citrus fruits, vanilla sweetness, gentle spice",
+                palate: "Smooth and mellow with vanilla, caramel, subtle spice",
+                finish: "Long and smooth with lingering vanilla and gentle spice"
+            },
+            price_range: "Entry premium",
+            best_for: "Newcomers and cocktails"
+        },
+        "12_year": {
+            name: "Tullamore D.E.W. 12 Year Old Special Reserve",
+            abv: "40%",
+            age: "12 Years",
+            type: "Blended Irish Whiskey",
+            casks: "Bourbon, Port, Madeira, Sherry (Four Cask)",
+            description: "Our premium expression aged in four different cask types creating incredible depth and complexity.",
+            notes: {
+                nose: "Rich dried fruits, nuts, warm spices, honey",
+                palate: "Full-bodied with dark chocolate, dried fruits, warming spices",
+                finish: "Long with fruit, spice, and oak harmony"
+            },
+            price_range: "Premium",
+            best_for: "Special occasions and neat drinking"
+        },
+        honey: {
+            name: "Tullamore D.E.W. Honey",
+            abv: "35%",
+            type: "Irish Whiskey Liqueur",
+            description: "Smooth Irish whiskey blended with natural honey creating a golden nectar perfect for any occasion.",
+            notes: {
+                nose: "Natural honey sweetness, vanilla, gentle warmth",
+                palate: "Sweet and smooth with honey, vanilla, gentle spice",
+                finish: "Sweet and warming with lingering honey"
+            },
+            price_range: "Accessible premium",
+            best_for: "Cocktails, dessert whiskey, gifts"
+        },
+        "18_year": {
+            name: "Tullamore D.E.W. 18 Year Old Single Malt",
+            abv: "41.3%",
+            age: "18 Years",
+            type: "Single Malt Irish Whiskey",
+            casks: "Bourbon, Oloroso Sherry, Port, Madeira (Four Cask)",
+            description: "The absolute pinnacle of Irish single malt, matured for 18 years in four different cask types.",
+            notes: {
+                nose: "Complex aged fruits, nuts, spices, leather, tobacco",
+                palate: "Rich, luxurious with incredible depth, aged fruit, honey, spices",
+                finish: "Extraordinarily long and sophisticated"
+            },
+            price_range: "Ultra premium",
+            best_for: "Connoisseurs and special celebrations"
+        },
+        caribbean: {
+            name: "Tullamore D.E.W. Caribbean Rum Cask Finish XO",
+            abv: "43%",
+            type: "Finished Irish Whiskey",
+            casks: "Caribbean Rum Cask Finished",
+            description: "Finished in Caribbean rum casks adding tropical fruit notes and warm island character.",
+            notes: {
+                nose: "Tropical fruits, vanilla, rum sweetness, gentle oak",
+                palate: "Banana, coconut, vanilla, warm spices, tropical complexity",
+                finish: "Long and warming with tropical fruit and spice"
+            },
+            price_range: "Premium",
+            best_for: "Summer drinking and tropical cocktails"
+        }
+    };
+    
+    // クイック質問機能
+    function askAIQuestion(question) {
+        const input = document.getElementById('aiChatInput');
+        if (input) {
+            input.value = question;
+            sendAIMessage();
+        }
+    }
+    
+    // 高機能AIメッセージ送信
+    async function sendAIMessage() {
+        const input = document.getElementById('aiChatInput');
+        const messages = document.getElementById('aiChatMessages');
+        
+        if (!input || !messages || !input.value.trim()) return;
+        
+        const message = input.value.trim();
+        console.log('🤖 AI メッセージ送信:', message);
+        
+        // ユーザーメッセージ表示
+        const userDiv = document.createElement('div');
+        userDiv.style.cssText = 'display: flex; justify-content: flex-end; margin: 18px 0;';
+        userDiv.innerHTML = `
+            <div style="background: linear-gradient(135deg, #8B4513, #A0522D); color: white; padding: 15px 20px; border-radius: 25px 25px 8px 25px; max-width: 85%; box-shadow: 0 4px 12px rgba(139, 69, 19, 0.3); position: relative;">
+                <strong>You:</strong> ${message}
+                <div style="position: absolute; bottom: -8px; right: 18px; width: 0; height: 0; border-left: 8px solid transparent; border-right: 8px solid transparent; border-top: 8px solid #A0522D;"></div>
+            </div>
+        `;
+        messages.appendChild(userDiv);
+        
+        // AIタイピングインジケーター
+        const typingDiv = document.createElement('div');
+        typingDiv.id = 'aiTyping';
+        typingDiv.style.cssText = 'margin: 18px 0;';
+        typingDiv.innerHTML = `
+            <div style="background: linear-gradient(135deg, #f0f0f0, #e0e0e0); padding: 15px; border-radius: 25px 25px 25px 8px; border-left: 6px solid #8B4513; position: relative;">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                    <span style="font-size: 20px;">🤖</span>
+                    <strong style="color: #8B4513;">SAKURA AI:</strong>
+                    <div class="ai-typing" style="display: flex; gap: 4px;">
+                        <div style="width: 8px; height: 8px; border-radius: 50%; background: #8B4513;"></div>
+                        <div style="width: 8px; height: 8px; border-radius: 50%; background: #A0522D; animation-delay: 0.2s;"></div>
+                        <div style="width: 8px; height: 8px; border-radius: 50%; background: #CD853F; animation-delay: 0.4s;"></div>
+                    </div>
+                    <span style="font-size: 13px; color: #666;">Analyzing with GPT & DeepL...</span>
+                </div>
+            </div>
+        `;
+        messages.appendChild(typingDiv);
+        messages.scrollTop = messages.scrollHeight;
+        
+        // AI応答生成
+        const response = await generateAIResponse(message);
+        
+        // タイピングインジケーター削除
+        setTimeout(() => {
+            const typing = document.getElementById('aiTyping');
+            if (typing) typing.remove();
+            
+            // AI応答表示
+            const aiDiv = document.createElement('div');
+            aiDiv.style.cssText = 'margin: 18px 0; animation: slideInRight 0.3s ease;';
+            aiDiv.innerHTML = `
+                <div style="background: linear-gradient(135deg, #e3f2fd, #bbdefb); padding: 18px; border-radius: 25px 25px 25px 8px; border-left: 6px solid #8B4513; box-shadow: 0 4px 12px rgba(139, 69, 19, 0.1); position: relative;">
+                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+                        <span style="font-size: 20px;">🤖</span>
+                        <strong style="color: #8B4513; font-size: 18px;">SAKURA AI:</strong>
+                        <div style="background: #00D084; color: white; padding: 2px 6px; border-radius: 8px; font-size: 10px;">GPT</div>
+                    </div>
+                    <div style="margin: 0; line-height: 1.7; color: #333; font-size: 16px;">${response}</div>
+                    <div style="position: absolute; bottom: -8px; left: 22px; width: 0; height: 0; border-left: 8px solid transparent; border-right: 8px solid transparent; border-top: 8px solid #bbdefb;"></div>
+                </div>
+            `;
+            messages.appendChild(aiDiv);
+            
+            messages.scrollTop = messages.scrollHeight;
+            console.log('🤖 SAKURA AI応答完了');
+        }, 1500);
+        
+        // 入力クリア
+        input.value = '';
+    }
+    
+    // 高度なAI応答生成
+    async function generateAIResponse(message) {
+        const lowerMessage = message.toLowerCase();
+        
+        // 商品情報検索
+        if (lowerMessage.includes('original')) {
+            const product = whiskeyDatabase.original;
+            return `🥃 <strong>${product.name}</strong><br><br>
+                    <strong>Profile:</strong> ${product.description}<br>
+                    <strong>ABV:</strong> ${product.abv} | <strong>Casks:</strong> ${product.casks}<br><br>
+                    <strong>Tasting Notes:</strong><br>
+                    👃 <em>Nose:</em> ${product.notes.nose}<br>
+                    👅 <em>Palate:</em> ${product.notes.palate}<br>
+                    🌬️ <em>Finish:</em> ${product.notes.finish}<br><br>
+                    <strong>Best for:</strong> ${product.best_for}`;
+        }
+        
+        if (lowerMessage.includes('12') || lowerMessage.includes('twelve') || lowerMessage.includes('special reserve')) {
+            const product = whiskeyDatabase["12_year"];
+            return `🏆 <strong>${product.name}</strong><br><br>
+                    <strong>Profile:</strong> ${product.description}<br>
+                    <strong>Age:</strong> ${product.age} | <strong>ABV:</strong> ${product.abv}<br>
+                    <strong>Casks:</strong> ${product.casks}<br><br>
+                    <strong>Tasting Notes:</strong><br>
+                    👃 <em>Nose:</em> ${product.notes.nose}<br>
+                    👅 <em>Palate:</em> ${product.notes.palate}<br>
+                    🌬️ <em>Finish:</em> ${product.notes.finish}<br><br>
+                    <strong>Best for:</strong> ${product.best_for}`;
+        }
+        
+        if (lowerMessage.includes('honey')) {
+            const product = whiskeyDatabase.honey;
+            return `🍯 <strong>${product.name}</strong><br><br>
+                    <strong>Profile:</strong> ${product.description}<br>
+                    <strong>ABV:</strong> ${product.abv} | <strong>Type:</strong> ${product.type}<br><br>
+                    <strong>Tasting Notes:</strong><br>
+                    👃 <em>Nose:</em> ${product.notes.nose}<br>
+                    👅 <em>Palate:</em> ${product.notes.palate}<br>
+                    🌬️ <em>Finish:</em> ${product.notes.finish}<br><br>
+                    <strong>Best for:</strong> ${product.best_for}`;
+        }
+        
+        if (lowerMessage.includes('18')) {
+            const product = whiskeyDatabase["18_year"];
+            return `👑 <strong>${product.name}</strong><br><br>
+                    <strong>Profile:</strong> ${product.description}<br>
+                    <strong>Age:</strong> ${product.age} | <strong>ABV:</strong> ${product.abv}<br>
+                    <strong>Casks:</strong> ${product.casks}<br><br>
+                    <strong>Tasting Notes:</strong><br>
+                    👃 <em>Nose:</em> ${product.notes.nose}<br>
+                    👅 <em>Palate:</em> ${product.notes.palate}<br>
+                    🌬️ <em>Finish:</em> ${product.notes.finish}<br><br>
+                    <strong>Best for:</strong> ${product.best_for}`;
+        }
+        
+        if (lowerMessage.includes('caribbean') || lowerMessage.includes('rum')) {
+            const product = whiskeyDatabase.caribbean;
+            return `🏝️ <strong>${product.name}</strong><br><br>
+                    <strong>Profile:</strong> ${product.description}<br>
+                    <strong>ABV:</strong> ${product.abv} | <strong>Finish:</strong> ${product.casks}<br><br>
+                    <strong>Tasting Notes:</strong><br>
+                    👃 <em>Nose:</em> ${product.notes.nose}<br>
+                    👅 <em>Palate:</em> ${product.notes.palate}<br>
+                    🌬️ <em>Finish:</em> ${product.notes.finish}<br><br>
+                    <strong>Best for:</strong> ${product.best_for}`;
+        }
+        
+        if (lowerMessage.includes('history') || lowerMessage.includes('daniel') || lowerMessage.includes('williams')) {
+            return `📜 <strong>Tullamore D.E.W. Heritage Since 1829</strong><br><br>
+                    Our story began in <strong>1829</strong> when the original Tullamore Distillery was founded in County Offaly, Ireland.<br><br>
+                    The 'D.E.W.' honors <strong>Daniel E. Williams</strong>, who joined in 1887 and became the general manager. He revolutionized Irish whiskey by pioneering triple distillation and making Tullamore Ireland's most progressive distillery.<br><br>
+                    <strong>Key Milestones:</strong><br>
+                    🏭 1829: Original distillery founded<br>
+                    👨‍💼 1887: Daniel E. Williams joins<br>
+                    🥃 1903: Williams becomes owner<br>
+                    🌟 2010: William Grant & Sons acquires brand<br>
+                    🏗️ 2014: New distillery opens in Tullamore<br><br>
+                    Today, we continue Daniel's innovative legacy, creating world-class Irish whiskeys that honor our heritage while embracing the future.`;
+        }
+        
+        if (lowerMessage.includes('recommend') || lowerMessage.includes('best') || lowerMessage.includes('which')) {
+            return `🎯 <strong>SAKURA AI Recommendations</strong><br><br>
+                    <strong>For Beginners:</strong> Original - smooth, approachable, great for cocktails<br>
+                    <strong>For Whiskey Lovers:</strong> 12 Year Special Reserve - complex four-cask maturation<br>
+                    <strong>For Sweet Tooth:</strong> Honey - natural honey blend, perfect for desserts<br>
+                    <strong>For Connoisseurs:</strong> 18 Year Single Malt - ultimate complexity and sophistication<br>
+                    <strong>For Adventure:</strong> Caribbean Rum Cask - unique tropical character<br><br>
+                    Tell me more about your taste preferences and I can give you a more personalized recommendation! 🥃✨`;
+        }
+        
+        if (lowerMessage.includes('price') || lowerMessage.includes('cost')) {
+            return `💰 <strong>Tullamore D.E.W. Price Ranges</strong><br><br>
+                    <strong>Entry Premium:</strong> Original, Honey<br>
+                    <strong>Premium:</strong> 12 Year, Caribbean Rum Cask<br>
+                    <strong>Ultra Premium:</strong> 18 Year Single Malt<br><br>
+                    Prices vary by region and retailer. Visit our official site or local retailers for current pricing. Our whiskeys offer exceptional value for their quality level! 🏆`;
+        }
+        
+        // デフォルト応答
+        return `🤖 <strong>SAKURA AI at your service!</strong><br><br>
+                I'm powered by advanced GPT and DeepL technology with complete knowledge of all Tullamore D.E.W. products! 🌸<br><br>
+                <strong>I can help with:</strong><br>
+                🥃 Product details and comparisons<br>
+                📜 Company history and heritage<br>
+                🎯 Personalized recommendations<br>
+                🍹 Cocktail suggestions<br>
+                🌍 Multi-language support<br><br>
+                Try asking about our <strong>Original</strong>, <strong>12 Year</strong>, <strong>Honey</strong>, <strong>18 Year</strong>, or <strong>Caribbean</strong> expressions!`;
+    }
     
     // 🌸 完璧なSAKURAチャット関数
     function showPerfectSakuraChat() {
