@@ -1,0 +1,21 @@
+{
+  "name": "tullamore-dew-distillery",
+  "version": "1.0.0",
+  "description": "Tullamore D.E.W. Distillery Website",
+  "scripts": {
+    "deploy": "./deploy-to-netlify.sh",
+    "deploy:preview": "netlify deploy --dir . --site cool-moonbeam-c338ce",
+    "deploy:prod": "netlify deploy --prod --dir . --site cool-moonbeam-c338ce",
+    "login": "netlify login",
+    "status": "netlify status",
+    "open": "netlify open --site cool-moonbeam-c338ce"
+  },
+  "keywords": [
+    "whiskey",
+    "tullamore",
+    "distillery",
+    "irish-whiskey"
+  ],
+  "author": "",
+  "license": "ISC"
+}
